@@ -59,10 +59,9 @@ public class HuffProcessor {
 		counts[PSEUDO_EOF] = 1;
 		while (true) {
 			int bits = in.readBits(BITS_PER_WORD);
-			if (bits == -1) break;
-			counts[bits] += 1;
-			
-			
+			if (bits == -1) 
+				break;
+			counts[bits] ++;
 		}
 		return counts;
 	}
@@ -116,7 +115,7 @@ public class HuffProcessor {
 		}
 		else {
 			out.writeBits(1, 1);
-			out.writeBits(BITS_PER_WORD, root.myValue);
+			out.writeBits(BITS_PER_WORD+1, root.myValue);
 			return;
 		}
 	}
@@ -131,8 +130,8 @@ public class HuffProcessor {
 				String code = codings[bits];
 				out.writeBits(code.length(), Integer.parseInt(code,2));
 			}
-			String code = codings[PSEUDO_EOF];
-			out.writeBits(code.length(), Integer.parseInt(code,2));
+		String code = codings[PSEUDO_EOF];
+		out.writeBits(code.length(), Integer.parseInt(code,2));
 		}
 	}
 
