@@ -59,10 +59,10 @@ public class HuffProcessor {
 		counts[PSEUDO_EOF] = 1;
 		while (true) {
 			int bits = in.readBits(BITS_PER_WORD);
-			if (bits == -1) {
-				break;
-			}
+			if (bits == -1) break;
 			counts[bits] += 1;
+			
+			
 		}
 		return counts;
 	}
